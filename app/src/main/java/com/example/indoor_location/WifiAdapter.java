@@ -13,7 +13,7 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder>{
-    private List<NetworkManager> wifi;
+    private List<Network> wifi;
 
 
 
@@ -31,7 +31,7 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder>{
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public WifiAdapter(List<NetworkManager> wifi) {
+    public WifiAdapter(List<Network> wifi) {
         this.wifi = wifi;
     }
 
