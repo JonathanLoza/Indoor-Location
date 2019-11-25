@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "94149806982",
+    "firebase_url": "https://indoor-localization-eec99.firebaseio.com",
+    "project_id": "indoor-localization-eec99",
+    "storage_bucket": "indoor-localization-eec99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94149806982:android:c092fd5b119decbd7cfa07",
+        "android_client_info": {
+          "package_name": "com.example.indoor_location"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94149806982-b5gen8oa5bfie27tkddrqmr1pu47t5ch.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjypZWE7Taw8w3WmOjPaG9cq6-N63LYgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94149806982-b5gen8oa5bfie27tkddrqmr1pu47t5ch.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

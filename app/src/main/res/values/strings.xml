@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Indoor-Location</string>
+    <string name="location">Locate</string>
 </resources>
