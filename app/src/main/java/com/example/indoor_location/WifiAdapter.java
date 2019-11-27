@@ -20,6 +20,7 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder> 
         public TextView mac;
         public TextView distance;
 
+
         public MyViewHolder(View v) {
             super(v);
             nombre = (TextView) v.findViewById(R.id.nombre);

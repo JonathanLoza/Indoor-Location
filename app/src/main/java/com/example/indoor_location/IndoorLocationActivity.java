@@ -16,8 +16,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import android.widget.ListView;
 import android.widget.Toast;
+
+import android.widget.TextView;
+
+import com.google.firebase.database.FirebaseDatabase;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,24 +33,34 @@ public class IndoorLocationActivity extends AppCompatActivity {
     private WifiAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Button buttonOpenBottomSheet;
+
     private WifiManager wifiManager;
     private final int MY_PERMISSIONS_ACCESS_COARSE_LOCATION = 1;
     NetworkManager receiverWifi;
+
+    private TextView place;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indoor_location);
-
+        place = findViewById(R.id.place);
         buttonOpenBottomSheet = findViewById(R.id.locate);
         buttonOpenBottomSheet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LocationBottomSheet bottomSheet = new LocationBottomSheet();
-                bottomSheet.show(getSupportFragmentManager(),"bs");
+                Repository repository = new Repository();
+                repository.getPlace("a0:39:ee:98:fa:f6", place);
+
+                LocationBottomSheet bottomSheet = new LocationBottomSheet(getBaseContext());
+                bottomSheet.show(getSupportFragmentManager(), "bs");
+
             }
         });
+
         layoutManager = new LinearLayoutManager(this);
+
         recyclerView = (RecyclerView) findViewById(R.id.rvWifi);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
