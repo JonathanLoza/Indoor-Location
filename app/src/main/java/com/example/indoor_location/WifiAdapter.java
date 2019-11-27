@@ -5,16 +5,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
-public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder>{
+public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder> {
     private List<Network> wifi;
-
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -22,6 +18,7 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder>{
         public TextView nombre;
         public TextView rssi;
         public TextView mac;
+
         public MyViewHolder(View v) {
             super(v);
             nombre = (TextView) v.findViewById(R.id.nombre);
@@ -39,7 +36,7 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder>{
     @Override
     public WifiAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v =  LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cardview, parent, false);
 
         MyViewHolder vh = new MyViewHolder(v);
         return vh;

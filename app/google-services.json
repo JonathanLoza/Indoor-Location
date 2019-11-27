@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "94149806982",
-    "firebase_url": "https://indoor-localization-eec99.firebaseio.com",
-    "project_id": "indoor-localization-eec99",
-    "storage_bucket": "indoor-localization-eec99.appspot.com"
+    "project_number": "277992892071",
+    "firebase_url": "https://indoor-location-68a3f.firebaseio.com",
+    "project_id": "indoor-location-68a3f",
+    "storage_bucket": "indoor-location-68a3f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:94149806982:android:c092fd5b119decbd7cfa07",
+        "mobilesdk_app_id": "1:277992892071:android:9f39a0ece06b2783a49d82",
         "android_client_info": {
           "package_name": "com.example.indoor_location"
         }
       },
       "oauth_client": [
         {
-          "client_id": "94149806982-b5gen8oa5bfie27tkddrqmr1pu47t5ch.apps.googleusercontent.com",
+          "client_id": "277992892071-4n9qp123l2ascpcaq3f9mdu06081mo79.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBjypZWE7Taw8w3WmOjPaG9cq6-N63LYgA"
+          "current_key": "AIzaSyCuHIc2C74L_JWhl4l9TUyoHKYUHBNkYNM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "94149806982-b5gen8oa5bfie27tkddrqmr1pu47t5ch.apps.googleusercontent.com",
+              "client_id": "277992892071-4n9qp123l2ascpcaq3f9mdu06081mo79.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
