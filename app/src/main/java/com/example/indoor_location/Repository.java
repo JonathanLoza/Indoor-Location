@@ -15,6 +15,10 @@ public class Repository {
 
     void getPlace(String mac, LocationBottomSheet bottomSheet) {
         //database.child("places").child("a0:39:ee:98:fa:f6").setValue("aea");
-        database.child(mac).addValueEventListener(new DatabaseEvent(mac, bottomSheet));
+        database.child(getReducedMac(mac)).addValueEventListener(new DatabaseEvent(bottomSheet));
+    }
+
+    public String getReducedMac(String mac){
+        return mac.substring(0,14);
     }
 }

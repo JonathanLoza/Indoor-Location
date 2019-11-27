@@ -9,11 +9,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
 public class DatabaseEvent implements ValueEventListener {
-    private String mac;
     LocationBottomSheet bottomSheet;
 
-    DatabaseEvent(String mac, LocationBottomSheet bottomSheet) {
-        this.mac = mac;
+    DatabaseEvent(LocationBottomSheet bottomSheet) {
         this.bottomSheet = bottomSheet;
     }
 

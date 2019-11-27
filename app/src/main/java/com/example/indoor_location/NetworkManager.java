@@ -32,14 +32,10 @@ public class NetworkManager extends BroadcastReceiver {
             List<ScanResult> wifiList = wifiManager.getScanResults();
             networks = new ArrayList<>();
             for (ScanResult scanResult : wifiList) {
-                //sb.append("\n").append(scanResult.SSID).append(" - ").append(scanResult.capabilities);
-                //deviceList.add(scanResult.SSID + " - " + scanResult.capabilities);
-                networks.add(new Network(scanResult.SSID,scanResult.BSSID,scanResult.level,calculateDistance(scanResult.frequency,scanResult.level)));
+                networks.add(new Network(isProtected(scanResult.SSID),scanResult.BSSID,scanResult.level,calculateDistance(scanResult.frequency,scanResult.level)));
             }
-            //Toast.makeText(context, sb, Toast.LENGTH_SHORT).show();
+
             mAdapter = new WifiAdapter(networks);
-            //ArrayAdapter arrayAdapter = new ArrayAdapter(context, android.R.layout.simple_list_item_1, deviceList.toArray());
-            //wifiDeviceList.setAdapter(arrayAdapter);
             recyclerView.setAdapter(mAdapter);
         }
     }
@@ -53,4 +49,11 @@ public class NetworkManager extends BroadcastReceiver {
         return Math.pow(10.0, (DISTANCE_MHZ_M - (20 * Math.log10(frequency)) + Math.abs(level)) / 20.0);
     }
 
+    public String isProtected(String SSID){
+        System.out.println("SSID: "+SSID);
+        if(SSID.equals("")){
+            return "Hidden Network";
+        }
+        return SSID;
+    }
 }
