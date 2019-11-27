@@ -23,11 +23,22 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Small Text"
             android:id="@+id/mac"
             android:layout_below="@+id/nombre"
             android:layout_marginLeft="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/distance"
+            android:text="distance"
+            android:layout_below="@+id/mac"
+            android:layout_marginLeft="20dp"
+            />
+
 
         <TextView
             android:id="@+id/rssi"
