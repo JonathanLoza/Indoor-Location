@@ -13,7 +13,7 @@ import java.util.List;
 
 public class NetworkManager extends BroadcastReceiver {
     private static final double DISTANCE_MHZ_M = 27.55;
-    List<Network> networks;
+    public List<Network> networks;
     WifiManager wifiManager;
     private WifiAdapter mAdapter;
     private RecyclerView recyclerView;
@@ -23,9 +23,6 @@ public class NetworkManager extends BroadcastReceiver {
         this.wifiManager = wifiManager;
         this.recyclerView = recyclerView;
     }
-    public NetworkManager(){
-        networks = new ArrayList<>();
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -33,14 +30,14 @@ public class NetworkManager extends BroadcastReceiver {
         if (WifiManager.SCAN_RESULTS_AVAILABLE_ACTION.equals(action)) {
             sb = new StringBuilder();
             List<ScanResult> wifiList = wifiManager.getScanResults();
-            ArrayList<Network> deviceList = new ArrayList<>();
+            networks = new ArrayList<>();
             for (ScanResult scanResult : wifiList) {
                 //sb.append("\n").append(scanResult.SSID).append(" - ").append(scanResult.capabilities);
                 //deviceList.add(scanResult.SSID + " - " + scanResult.capabilities);
-                deviceList.add(new Network(scanResult.SSID,scanResult.BSSID,scanResult.level,calculateDistance(scanResult.frequency,scanResult.level)));
+                networks.add(new Network(scanResult.SSID,scanResult.BSSID,scanResult.level,calculateDistance(scanResult.frequency,scanResult.level)));
             }
             //Toast.makeText(context, sb, Toast.LENGTH_SHORT).show();
-            mAdapter = new WifiAdapter(deviceList);
+            mAdapter = new WifiAdapter(networks);
             //ArrayAdapter arrayAdapter = new ArrayAdapter(context, android.R.layout.simple_list_item_1, deviceList.toArray());
             //wifiDeviceList.setAdapter(arrayAdapter);
             recyclerView.setAdapter(mAdapter);

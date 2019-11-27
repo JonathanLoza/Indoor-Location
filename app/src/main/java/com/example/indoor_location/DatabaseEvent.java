@@ -10,17 +10,22 @@ import com.google.firebase.database.ValueEventListener;
 
 public class DatabaseEvent implements ValueEventListener {
     private String mac;
-    TextView placeView;
+    LocationBottomSheet bottomSheet;
 
-    DatabaseEvent(String mac, TextView placeView) {
+    DatabaseEvent(String mac, LocationBottomSheet bottomSheet) {
         this.mac = mac;
-        this.placeView = placeView;
+        this.bottomSheet = bottomSheet;
     }
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        if (!dataSnapshot.exists()) {
+            bottomSheet.setText("Unrecognized");
+            return;
+        }
+
         String place = dataSnapshot.getValue(String.class);
-        placeView.setText(place);
+        bottomSheet.setText(place);
     }
 
     @Override

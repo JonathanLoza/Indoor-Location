@@ -13,8 +13,8 @@ public class Repository {
         database = FirebaseDatabase.getInstance("https://indoor-location-68a3f.firebaseio.com/").getReference(Repository.MAIN_CHILD);
     }
 
-    void getPlace(String mac, TextView place) {
+    void getPlace(String mac, LocationBottomSheet bottomSheet) {
         //database.child("places").child("a0:39:ee:98:fa:f6").setValue("aea");
-        database.child(mac).addValueEventListener(new DatabaseEvent(mac, place));
+        database.child(mac).addValueEventListener(new DatabaseEvent(mac, bottomSheet));
     }
 }

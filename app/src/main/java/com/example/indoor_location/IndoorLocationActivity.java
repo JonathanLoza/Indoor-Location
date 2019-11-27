@@ -16,8 +16,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import android.widget.ListView;
 import android.widget.Toast;
 
 import android.widget.TextView;
@@ -25,12 +23,8 @@ import android.widget.TextView;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class IndoorLocationActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private WifiAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private Button buttonOpenBottomSheet;
 
@@ -38,26 +32,10 @@ public class IndoorLocationActivity extends AppCompatActivity {
     private final int MY_PERMISSIONS_ACCESS_COARSE_LOCATION = 1;
     NetworkManager receiverWifi;
 
-    private TextView place;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indoor_location);
-        place = findViewById(R.id.place);
-        buttonOpenBottomSheet = findViewById(R.id.locate);
-        buttonOpenBottomSheet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Repository repository = new Repository();
-                repository.getPlace("a0:39:ee:98:fa:f6", place);
-
-                LocationBottomSheet bottomSheet = new LocationBottomSheet(getBaseContext());
-                bottomSheet.show(getSupportFragmentManager(), "bs");
-
-            }
-        });
 
         layoutManager = new LinearLayoutManager(this);
 
@@ -76,21 +54,30 @@ public class IndoorLocationActivity extends AppCompatActivity {
             wifiManager.startScan();
         }
 
+        receiverWifi = new NetworkManager(wifiManager, recyclerView);
+        buttonOpenBottomSheet = findViewById(R.id.locate);
+        buttonOpenBottomSheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LocationBottomSheet bottomSheet = new LocationBottomSheet();
+                bottomSheet.show(getSupportFragmentManager(), "bs");
 
-        // specify an adapter (see also next example)
-        /*mAdapter = new WifiAdapter(items);
-        recyclerView.setAdapter(mAdapter);*/
+                Repository repository = new Repository();
+                repository.getPlace(receiverWifi.networks.get(0).getMac(), bottomSheet);
+            }
+        });
     }
 
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        receiverWifi = new NetworkManager(wifiManager,recyclerView);
+        //receiverWifi = new NetworkManager(wifiManager, recyclerView);
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
         registerReceiver(receiverWifi, intentFilter);
         getWifi();
     }
+
     private void getWifi() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Toast.makeText(IndoorLocationActivity.this, "version> = marshmallow", Toast.LENGTH_SHORT).show();
@@ -107,11 +94,13 @@ public class IndoorLocationActivity extends AppCompatActivity {
             wifiManager.startScan();
         }
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         unregisterReceiver(receiverWifi);
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
