@@ -18,12 +18,15 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder> 
         public TextView nombre;
         public TextView rssi;
         public TextView mac;
+        public TextView distance;
+
 
         public MyViewHolder(View v) {
             super(v);
             nombre = (TextView) v.findViewById(R.id.nombre);
             mac = (TextView) v.findViewById(R.id.mac);
             rssi = (TextView) v.findViewById(R.id.rssi);
+            distance = (TextView) v.findViewById(R.id.distance);
         }
     }
 
@@ -50,6 +53,8 @@ public class WifiAdapter extends RecyclerView.Adapter<WifiAdapter.MyViewHolder> 
         holder.nombre.setText(wifi.get(position).getNombre());
         holder.mac.setText(wifi.get(position).getMac());
         holder.rssi.setText(Integer.toString(wifi.get(position).getRssi()));
+        holder.distance.setText(String.format ("%.2f", wifi.get(position).getDistance())+ "" +
+                "m");
 
     }
 

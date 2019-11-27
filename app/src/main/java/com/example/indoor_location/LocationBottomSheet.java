@@ -24,6 +24,9 @@ public class LocationBottomSheet extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.bottom_sheet_layout,container,false);
 
+        TextView text =  v.findViewById(R.id.place);
+        text.setText("LAEA");
+
         return v;
     }
 }
